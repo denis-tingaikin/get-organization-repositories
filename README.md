@@ -1,6 +1,6 @@
 # Get organization repositories
 
-This returns list of repositories by passed organization.
+This returns a list of repositories by the passed organizations. The action can be used with the matrix GitHub action feature to run jobs for a few repositories.
 
 ## Inputs
 
@@ -16,7 +16,7 @@ This returns list of repositories by passed organization.
 
 ### `repositories`
 
-The list of repositories related to passed organization.
+The list of repositories related to passed organization in JSON format.
 
 ## Example usage
 ```yaml

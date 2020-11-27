@@ -28,7 +28,7 @@ jobs:
     needs: fetch-repositories
     strategy:
       matrix:
-        repository: ${{ needs.fetch-repositories.outputs.repositories }}
+        repository: ${{ fromJSON(needs.fetch-repositories.outputs.repositories) }}
     steps:
     - name: Say hello to ${{ matrix.repository }}
       run: echo Hi ${{ matrix.repository }}

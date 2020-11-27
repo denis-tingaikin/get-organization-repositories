@@ -37,7 +37,9 @@ func main() {
 
 	_, _ = sb.WriteString("[")
 	for i, r := range result {
+		_, _ = sb.WriteString("\"")
 		_, _ = sb.WriteString(r.GetFullName())
+		_, _ = sb.WriteString("\"")
 		if i+1 < len(result) {
 			_, _ = sb.WriteString(", ")
 		}
