@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Test get-organization-repositoriesv1
       id: hello
-      uses: denis-tingajkin/get-organization-repositories@v1
+      uses: denis-tingajkin/get-organization-repositories@main
       with:
         github-organization: 'github'
     - name: Print results
