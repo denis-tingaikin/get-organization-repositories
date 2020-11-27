@@ -9,3 +9,5 @@ RUN go build -o /bin/app .
 FROM alpine as runtime
 COPY --from=go /bin/app /bin/app
 CMD /bin/app
+
+ENTRYPOINT /bin/app
