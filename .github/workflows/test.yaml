@@ -1,14 +1,34 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  fetch-repositories:
+    name: Fetch organization repositories
     runs-on: ubuntu-latest
-    name: Testing
+    outputs:
+      repositories: ${{ steps.organization-repositories.outputs.repositories }}
     steps:
-    - name: Test get-organization-repositoriesv1
-      id: hello
+    - name: Run `get-organization-repositories`
+      id: organization-repositories
       uses: denis-tingajkin/get-organization-repositories@main
       with:
         github-organization: 'github'
-    - name: Print results
-      run: echo "${{ steps.hello.outputs.repositories }}"
+    - name: Print value
+      run: echo ${{ steps.organization-repositories.outputs.repositories }}
+  inspect-value:
+    name: Inspect value
+    runs-on: ubuntu-latest
+    needs: fetch-repositories
+    steps:
+    - name: Print value
+      run: echo ${{ needs.fetch-repositories.outputs.repositories }}
+  say-hello:
+    name: Say hello to fetched repositories
+    runs-on: ubuntu-latest
+    needs: fetch-repositories
+    strategy:
+      fail-fast: false
+      matrix:
+        repository: ${{ needs.fetch-repositories.outputs.repositories }}
+    steps:
+    - name: Say hello to ${{ matrix.repository }}
+      run: echo Hi ${{ matrix.repository }}
