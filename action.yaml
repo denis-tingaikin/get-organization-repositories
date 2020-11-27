@@ -1,0 +1,14 @@
+name: 'Get organization repositories'
+description: 'Returns list of repositories that related to the passed organization'
+inputs:
+  github-organization:  # id of input
+    description: 'The GitHub organization.'
+    required: true
+outputs:
+  repositories: # id of output
+    description: 'The list of repositories.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ github-organization }}
