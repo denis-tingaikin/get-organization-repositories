@@ -1,15 +1,19 @@
-# action.yml
 name: 'Get organization repositories'
 description: 'Returns list of repositories that related to the passed organization'
 inputs:
-  github-organization:  # id of input
+  github-organization:
     description: 'The GitHub organization.'
     required: true
+  regex:
+    description: 'The regex pattern to match repository names. By default .*'
+    required: false
+    default: '.*'
 outputs:
-  repositories: # id of output
+  repositories:
     description: 'The list of repositories.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.regex }}
     - ${{ inputs.github-organization }}

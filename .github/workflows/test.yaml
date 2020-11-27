@@ -12,6 +12,7 @@ jobs:
       uses: denis-tingajkin/get-organization-repositories@main
       with:
         github-organization: 'github'
+        regex: '.*pong'
     - name: Print value
       run: echo ${{ steps.organization-repositories.outputs.repositories }}
   inspect-value:
@@ -26,7 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: fetch-repositories
     strategy:
-      fail-fast: false
       matrix:
         repository: ${{ needs.fetch-repositories.outputs.repositories }}
     steps:
