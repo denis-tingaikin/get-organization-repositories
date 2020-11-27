@@ -13,7 +13,8 @@ This returns list of repositories by passed organization.
 The list of repositories related to passed organization.
 
 ## Example usage
-
+```yaml
 uses: actions/get-organization-repositoties@v1
 with:
   github-organization: 'github'
+```
