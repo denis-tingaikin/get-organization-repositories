@@ -31,4 +31,8 @@ jobs:
         repository: ${{ fromJSON(needs.fetch-repositories.outputs.repositories) }}
     steps:
     - name: Say hello to ${{ matrix.repository }}
+      if: matrix.repository == 'github/pong111'
       run: echo Hi ${{ matrix.repository }}
+    - name: Check cond!!!
+      run: echo Hi ${{ matrix.repository }}
+    
