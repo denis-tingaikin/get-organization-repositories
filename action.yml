@@ -1,3 +1,6 @@
+branding:
+  icon: align-right
+  color: gray-dark
 name: 'Get organization repositories'
 description: 'Returns list of repositories that related to the passed organization'
 inputs:
