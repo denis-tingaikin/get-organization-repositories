@@ -9,13 +9,16 @@ import (
 	"github.com/google/go-github/v32/github"
 )
 
+const maxRepositoriesCount = 256 // this is max value for github job schedulers
+
 /*
 	os.Args[1] - regex pattern
 	os.Args[2] - org name
 */
 func main() {
 	client := github.NewClient(nil)
-	opt := &github.RepositoryListByOrgOptions{Type: "public"}
+	opt := &github.RepositoryListByOrgOptions{Type: "public", ListOptions: github.ListOptions{PerPage: maxRepositoriesCount}}
+	os.Args = append(os.Args, "cmd-.*", "networkservicemesh")
 	if len(os.Args) != 3 {
 		panic("args len is not 3")
 	}
