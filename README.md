@@ -20,7 +20,7 @@ The list of repositories related to passed organization in JSON format.
 
 ## Example usage
 ```yaml
-uses: actions/get-organization-repositories@v1
+uses: denis-tingaikin/get-organization-repositories@v1
 with:
   github-organization: 'github'
 ```
